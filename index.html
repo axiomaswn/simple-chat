@@ -1,22 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>simple-chat</title>
+    <title>simple chat</title>
     <link rel="stylesheet" type="text/css" href=https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.css>
   </head>
   <body>
     <div class="ui container">
-      <ul class="ui list" id="chat">
-
-      </ul>
-      <button class="ui button">
-        chat
-      </button>
+      <div id="chat" class="ui container segment"></div>
+      <form class="ui form" style="bottom:0;">
+        <div class="field">
+          <input id="isi" type="text">
+        </div>
+        <button class="ui button">Send</button>
+      </form>
     </div>
-
-
-
   </body>
+  <script src="/socket.io/socket.io.js"></script>
   <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+  <script>
+    var socket = io();
+    $('form').submit(function(){
+    socket.emit('chat message', $('#isi').val());
+    $('#isi').val('');
+    return false;
+    });
+    socket.on('chat message', function(message){
+    $('#chat').append($('<p>').text(message));
+    });
+  </script>
 </html>

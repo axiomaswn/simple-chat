@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/axiomaswn/simple-chat/issues"
   },
-  "homepage": "https://github.com/axiomaswn/simple-chat#readme"
+  "homepage": "https://github.com/axiomaswn/simple-chat#readme",
+  "dependencies": {
+    "express": "^4.14.1",
+    "nodemon": "^1.11.0",
+    "socket.io": "^1.7.3"
+  }
 }
